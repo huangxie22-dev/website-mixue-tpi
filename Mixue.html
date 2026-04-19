@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mixue - Ice Cream & Tea</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+        }
+        header {
+            background-color: #d80011;
+            padding: 20px 0;
+            border-radius: 20px 20px 0 0;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(216,0,17,0.08);
+            transition: background 0.3s;
+        }
+        header img {
+            max-width: 80%;
+            height: auto;
+        }
+        .logo {
+            margin: 0 auto 10px auto;
+            max-width: 150px;
+            animation: popIn 1s ease;
+        }
+        @keyframes popIn {
+            from {transform: scale(0.7); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        h1 {
+            color: #d80011;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        p.tagline {
+            color: #d80011;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        .nav-btns {
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            width: 200px;
+            margin: 8px 10px;
+            padding: 12px 0;
+            font-size: 1em;
+            color: white;
+            background: linear-gradient(90deg, #d80011 60%, #ff4A62 100%);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(216,0,17,0.08);
+            outline: none;
+        }
+        .btn:hover, .btn.active {
+            background: linear-gradient(90deg, #a0000c 60%, #ff4A62 100%);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 6px 20px rgba(216,0,17,0.14);
+        }
+        .btn.active {
+            border: 2.5px solid #fff760;
+            color: #fff760;
+            font-weight: bold;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+        #home-section {
+            margin-bottom: 50px;
+        }
+        #menu-section {
+            max-width: 1000px;
+            margin: 40px auto 0 auto;
+            padding: 0 15px;
+        }
+        #menu-section h2 {
+            color: #d80011;
+            font-size: 2.1em;
+            margin-bottom: 15px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .menu-card {
+            background: #fff;
+            border-radius: 17px;
+            box-shadow: 0 3px 18px rgba(216, 0, 17, 0.11);
+            padding: 20px 16px 18px 16px;
+            transition: transform 0.18s, box-shadow 0.18s;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(25px) scale(0.94);
+        }
+        .menu-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: opacity .7s cubic-bezier(.52,.01,.53,1.13),transform .5s cubic-bezier(.62,-0.01,.53,1.12);
+        }
+        .menu-card img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 1px 7px #ffd1d4;
+            background: #ffe6e6;
+            margin-bottom: 10px;
+        }
+        .menu-card h3 {
+            color: #d80011;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        .menu-card p {
+            font-size: 0.98em;
+            margin: 0 0 6px 0;
+            color: #444;
+        }
+        .menu-card .price {
+            color: #ff4A62;
+            font-weight: bold;
+            font-size: 1.13em;
+        }
+        /* Section style */
+        .info-section {
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            background: #fff9fa;
+            border-radius: 15px;
+            box-shadow: 0 3px 16px rgba(216, 0, 17, 0.07);
+            padding: 30px;
+            color: #333;
+            text-align: left;
+        }
+        .info-section h2 {
+            color: #d80011;
+            margin-bottom: 12px;
+            font-size: 1.7em;
+        }
+        .info-section p {
+            margin-top: 0;
+        }
+        @media (max-width:600px) {
+            .btn { width: 98%; }
+            #menu-section, .info-section { padding: 0 3vw; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+<header id="top">
+    <img src="ba4e3fcd4cc0ebe9bace134ce82765fe.jpg" alt="Mixue Logo" />
+</header>
+
+<!-- NAVIGATION (SELALU ADA) -->
+<div class="nav-btns">
+    <a href="#home-section" class="btn active" id="homeBtn">Home</a>
+    <a href="#history-section" class="btn" id="historyBtn">History</a>
+    <a href="#halal-section" class="btn" id="halalBtn">Halal Certification</a>
+    <a href="#menu-section" class="btn" id="menuBtn">Menu Mixue</a>
+    <a href="#outlet-section" class="btn" id="outletBtn">Outlet Mixue</a>
+    <a href="#blog-section" class="btn" id="blogBtn">Blog</a>
+</div>
+
+<section id="home-section">
+    <img src="c8f080ad3c54bb1f6041ebb8b327b52f.jpg" alt="Mixue Mascot" class="logo" />
+    <h1>MIXUE TANJUNG PINANG</h1>
+    <p class="tagline">Share Sweetness & Spread Happiness</p>
+</section>
+
+<section id="history-section" class="info-section" style="display:none">
+    <h2>History Mixue</h2>
+    <p>
+    Pada Juni 1997, Zhang Hongchao, seorang mahasiswa di Universitas Keuangan dan Ekonomi Henan, sedang mencari pekerjaan paruh waktu di kios minuman dingin untuk meringankan beban keuangan keluarganya. Saat bekerja di kios tersebut, ia terinspirasi untuk memulai bisnisnya sendiri.
+
+Dengan pinjaman dari neneknya, ia membuka kios es serut di kampung halamannya di Zhengzhou, Henan, menjual berbagai jenis es serut, es krim, smoothie, dan kemudian menambahkan teh susu mutiara ke dalam menu. Namun, perjalanan bisnisnya tidak mudah, dan ia menghadapi banyak rintangan, yang akhirnya menyebabkan ia menutup toko pertamanya.
+
+Tidak pernah menyerah pada mimpinya, pada tahun 1999, Zhang membuka kios es serut kedua, yang ia beri nama Mìxuě Bīngchéng (Hanzi: 蜜雪冰城), yang berarti "istana salju manis." Ia mengalihkan fokusnya ke produk es krim karena suguhan es krim cone semakin populer di Zhengzhou sejak tahun 2006 dan harga es krim meroket.
+
+Untuk membuat es krimnya lebih terjangkau, Zhang merumuskan ulang resepnya, menawarkannya dengan harga sekitar 20 persen lebih murah daripada produk serupa. Keberhasilannya dalam menjual es krim mendorongnya untuk terjun ke bisnis waralaba pada tahun 2008.
+
+Sejak tahun 2010-an, Mixue telah berkembang menjadi perusahaan sendiri, memperluas skema waralabanya ke wilayah lain di seluruh Tiongkok. Perusahaan ini memiliki pusat penelitian dan pengembangan di wilayah lain di Henan, serta pusat pergudangan dan logistik untuk merampingkan biaya produksi.
+
+Pada tahun 2022, Mixue Bingcheng Co., Ltd. berencana untuk melakukan penawaran umum perdana (IPO) di Bursa Efek Shenzhen. Bisnis es krim Mixue terus tumbuh dan sukses berkat dedikasi dan kerja keras Zhang Hongchao dan timnya. <br>
+    </p>
+</section>
+
+<section id="halal-section" class="info-section" style="display:none">
+    <h2>Sertifikat Halal</h2>
+    <p>
+        Mixue secara resmi bersertifikat Halal dari MUI. <br>
+        Kami berkomitmen menghadirkan produk berkualitas & halal untuk semua pelanggan. 
+        <br>
+        <img src="images (2).png" alt="Mixue Mascot" class="sertifikat halal" />
+    </p>
+</section>
+
+<section id="menu-section" style="display:none">
+    <h2>Menu Mixue Favorit</h2>
+    <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<section id="outlet-section" class="info-section" style="display:none">
+    <h2>Outlet Mixue</h2>
+    <p>
+        Kunjungi outlet kami di: <br>
+        Jl. Arah Tj. Uban - Tj. Pinang, Pinang Kencana, Kec. Tanjungpinang Tim., Kota Tanjung Pinang, Kepulauan Riau 29125 <br>
+        Jl. Raja H. Fisabililah, Batu IX, Kec. Tanjungpinang Tim., Kota Tanjung Pinang, Kepulauan Riau 29124 <br>
+        <i>(Outlet lain coming soon!)</i>
+    </p>
+</section>
+
+<section id="blog-section" class="info-section" style="display:none">
+    <h2>Mixue Blog & Update</h2>
+    <p>
+        <b>Tips Menikmati Es Krim di Cuaca Panas</b><br>
+        Temukan info menarik seputar Mixue, promo, dan tips minum es krim/teh yang seru di blog ini! <br>
+        <i>Artikel terbaru akan hadir segera~</i>
+    </p>
+</section>
+
+<script>
+    // MENU DATA
+    const menuItems = [
+        {
+            name: "Ice Cream Cone",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/ice-cream-cone.png",
+            price: "Rp8.000",
+            desc: "Cone es krim klasik Mixue yang creamy, lembut dan segar."
+        },
+        {
+            name: "Boba Sundae",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/boba_sundae.png",
+            price: "Rp16.000",
+            desc: "Es krim sundae vanilla dengan topping boba kenyal nikmat."
+        },
+        {
+            name: "Real Fruit Tea",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/real-fruit-tea.png",
+            price: "Rp22.000",
+            desc: "Teh dengan potongan buah-buahan segar dan rasa tropis."
+        },
+        {
+            name: "Strawberry Mi Sundae",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/mixue-strawberry-mi-sundae.png",
+            price: "Rp16.000",
+            desc: "Es krim dengan saus stroberi segar yang menggoda selera."
+        },
+        {
+            name: "Brown Sugar Pearl Milk Tea",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/brown-sugar-pearl-milk-tea.png",
+            price: "Rp22.000",
+            desc: "Milk tea klasik dengan boba dan gula aren khas."
+        },
+        {
+            name: "Supreme Mixed Fruit",
+            img: "https://mixue.co.id/wp-content/uploads/2022/09/supreme-mixed-fruit.png",
+            price: "Rp19.000",
+            desc: "Campuran buah segar dan es krim vanilla yang lezat."
+        }
+    ];
+
+    // Tampilkan Menu
+    const menuGrid = document.getElementById('menuGrid');
+    menuItems.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+            <img src="${item.img}" alt="${item.name}" />
+            <h3>${item.name}</h3>
+            <div class="price">${item.price}</div>
+            <p>${item.desc}</p>
+        `;
+        menuGrid.appendChild(card);
+    });
+
+    // Animasi fade-in saat scroll
+    function showMenuCardsOnView() {
+        const cards = document.querySelectorAll('.menu-card');
+        const trigger = window.innerHeight * 0.95;
+        cards.forEach((card, i) => {
+            const rect = card.getBoundingClientRect();
+            if(rect.top < trigger) {
+                setTimeout(() => card.classList.add('visible'), i*100);
+            }
+        });
+    }
+    window.addEventListener('scroll', showMenuCardsOnView);
+    window.addEventListener('load', showMenuCardsOnView);
+
+    // === NAVIGATION ===
+    const sections = [
+        {btn: 'homeBtn', sec: 'home-section'},
+        {btn: 'historyBtn', sec: 'history-section'},
+        {btn: 'halalBtn', sec: 'halal-section'},
+        {btn: 'menuBtn', sec: 'menu-section'},
+        {btn: 'outletBtn', sec: 'outlet-section'},
+        {btn: 'blogBtn', sec: 'blog-section'},
+    ];
+    sections.forEach(({btn, sec}) => {
+        let button = document.getElementById(btn);
+        if (button) {
+            button.addEventListener('click', function(e){
+                e.preventDefault();
+                // Reset active
+                document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
+                button.classList.add('active');
+                // SEMUA section disembunyi
+                sections.forEach(({sec: sid}) => {
+                    document.getElementById(sid).style.display = 'none';
+                });
+                // Section aktif dimunculkan
+                document.getElementById(sec).style.display = '';
+                // Scroll smooth ke section aktif
+                document.getElementById(sec).scrollIntoView({behavior: 'smooth'});
+            });
+        }
+    });
+
+    // Tampilkan home awal, lain hidden
+    window.addEventListener('DOMContentLoaded', () => {
+        sections.forEach(({sec}) => {
+            if(sec === 'home-section')
+                document.getElementById(sec).style.display = '';
+            else
+                document.getElementById(sec).style.display = 'none';
+        });
+    });
+</script>
+
+</body>
+</html>
